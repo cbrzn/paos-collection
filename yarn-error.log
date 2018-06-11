@@ -1,0 +1,107 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js install
+
+PATH: 
+  C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\jc\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Embarcadero\Studio\19.0\bin;C:\Users\Public\Documents\Embarcadero\Studio\19.0\Bpl;C:\Program Files (x86)\Embarcadero\Studio\19.0\bin64;C:\Users\Public\Documents\Embarcadero\Studio\19.0\Bpl\Win64;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\MinGW\bin;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Program Files (x86)\Microchip\MPLAB C32 Suite\bin;C:\Program Files (x86)\HI-TECH Software\PICC\9.82\bin;C:\Program Files\nodejs;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files\Java\jdk1.8.0_131\bin;C:\Develop\apache-tomcat-8.5.20\bin;C:\Program Files (x86)\Yarn\bin;C:\Program Files\Genymobile\Genymotion\tools;C:\Program Files\MongoDB\Server\3.6\bin;C:\Program Files\dotnet;C:\Users\jc\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\Users\jc\AppData\Roaming\npm;C:\Users\jc\AppData\Local\Yarn\bin;C:\Program Files\Genymobile\Genymotion\tools
+
+Yarn version: 
+  1.6.0
+
+Node version: 
+  8.9.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/auth0-js/-/auth0-js-9.6.1.tgz: ESOCKETTIMEDOUT
+      at ClientRequest.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:133786:19)
+      at Object.onceWrapper (events.js:313:30)
+      at emitNone (events.js:106:13)
+      at ClientRequest.emit (events.js:208:7)
+      at TLSSocket.emitTimeout (_http_client.js:708:34)
+      at Object.onceWrapper (events.js:313:30)
+      at emitNone (events.js:106:13)
+      at TLSSocket.emit (events.js:208:7)
+      at TLSSocket.Socket._onTimeout (net.js:407:8)
+      at ontimeout (timers.js:475:11)
+
+npm manifest: 
+  {
+    "name": "reacting",
+    "version": "1.0.0",
+    "description": "A Yatch Schedule and Reservation System",
+    "scripts": {
+      "start": "npm build && node dist/app.js",
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "build": "webpack --config ./webpack.dev.config.js"
+    },
+    "author": "Cesar Brazon && Eduardo Gonzalez",
+    "license": "ISC",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/cbrzn/tropicalSailing-min.git"
+    },
+    "bugs": {
+      "url": "https://github.com/cbrzn/tropicalSailing-min/issues"
+    },
+    "homepage": "https://github.com/cbrzn/tropicalSailing-min#readme",
+    "dependencies": {
+      "auth0-js": "^9.5.1",
+      "axios": "^0.18.0",
+      "bcryptjs": "^2.4.3",
+      "connect-flash": "^0.1.1",
+      "cookie-session": "^2.0.0-beta.3",
+      "create-react-class": "^15.6.3",
+      "css-loader": "^0.28.5",
+      "express": "^4.16.2",
+      "express-session": "^1.15.6",
+      "file-loader": "^1.1.11",
+      "less-loader": "^4.1.0",
+      "morgan": "^1.9.0",
+      "nodemailer": "^4.4.2",
+      "nodemon": "^1.17.2",
+      "passport": "^0.4.0",
+      "passport-local": "^1.0.0",
+      "pg-promise": "^7.3.2",
+      "query-string": "^6.1.0",
+      "react": "^16.3.0-alpha.1",
+      "react-bootstrap": "^0.32.1",
+      "react-dom": "^16.3.0-alpha.1",
+      "react-oauth-flow": "^1.1.1",
+      "react-router-dom": "^4.2.2",
+      "stripe": "^5.8.0",
+      "style-loader": "^0.18.2",
+      "stylus-loader": "^3.0.2",
+      "url-loader": "^1.0.1"
+    },
+    "devDependencies": {
+      "babel-cli": "^6.26.0",
+      "babel-core": "^6.26.0",
+      "babel-loader": "^6.2.5",
+      "babel-preset-env": "^1.6.1",
+      "babel-preset-es2015": "^6.24.1",
+      "babel-preset-react": "^6.24.1",
+      "babel-preset-stage-0": "^6.24.1",
+      "css-loader": "^0.28.11",
+      "eslint": "^4.19.1",
+      "eslint-plugin-react": "^7.7.0",
+      "file-loader": "^1.1.11",
+      "image-webpack-loader": "^4.2.0",
+      "less": "^2.7.2",
+      "nodemon": "^1.14.11",
+      "react-big-calendar": "^0.19.1",
+      "react-hot-loader": "^3.0.0-beta.5",
+      "style-loader": "^0.18.2",
+      "superagent": "^3.8.3",
+      "webpack": "^1.13.2",
+      "webpack-dev-middleware": "^1.8.3",
+      "webpack-hot-middleware": "^2.12.2"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

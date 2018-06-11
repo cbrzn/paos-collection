@@ -1,5 +1,14 @@
-import React from "react";
-import { render } from "react-dom";
-import App from "./src/App";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './app';
+import { BrowserRouter } from 'react-router-dom'
 
-render(<App />, document.getElementById("main"));
+// import registerServiceWorker from './registerServiceWorker';
+
+ReactDOM.render(
+    (<BrowserRouter>
+        <App />
+    </BrowserRouter>), 
+    document.getElementById('main')
+);
+// registerServiceWorker();
