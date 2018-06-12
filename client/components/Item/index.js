@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
 import { withStyles } from '@material-ui/core/styles';
 import {
-    // Card,
-    // CardMedia,
-    // CardContent,
-    // CardActions,
     Typography,
     ButtonBase,
 } from '@material-ui/core';

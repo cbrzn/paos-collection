@@ -6,42 +6,12 @@ import {
     Button,
     ButtonBase,
     Typography,
-    Switch,
     Collapse,
     Divider,
-    // ExpansionPanel,
-    // ExpansionPanelSummary,
-    // ExpansionPanelDetails,
 } from '@material-ui/core';
 // import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Input from '../../components/Input';
-
-const styles = theme => ({
-    root: {
-        margin: `${theme.spacing.unit*4}px ${theme.spacing.unit*8}px`,
-    },
-    title: {
-        marginTop: theme.spacing.unit*4,
-    },
-    price: {
-        marginTop: theme.spacing.unit,        
-    },
-    description: {
-        marginTop: theme.spacing.unit*3,
-    },
-    expand: {
-        flexGrow:1,
-        width:'100%',
-        display:'flex',
-        justifyContent:'flex-start',
-    },
-    actions: {
-        display:'flex',        
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-        paddingRight: theme.spacing.unit*2,
-    },
-});
+import { BootInput, ImageViewer } from '../../components';
+import styles from './styles';
 
 class Details extends Component {
     
@@ -72,11 +42,11 @@ class Details extends Component {
         return ( 
             <div className={classes.root}>
                 <Paper elevation={4}>
-                    <Grid container>
-                        <Grid item lg={6}>
-
+                    <Grid container justify="center">
+                        <Grid item lg={6} md={6} sm={6} xs={12}>
+                            <ImageViewer />
                         </Grid>
-                        <Grid item lg={6}>
+                        <Grid item lg={6} md={6} sm={6} xs={8}>
                             <Typography 
                                 variant="title"
                                 className={classes.title}
@@ -106,11 +76,11 @@ class Details extends Component {
                                 </Collapse>
                             </div>
                             <div className={classes.actions}>
-                                <Input />
+                                <BootInput />
                                 <Button
                                     color="primary"
                                     variant="raised"
-                                > ADD TO CART </Button>
+                                > ADD *ICON* </Button>
                             </div>
                         </Grid>
                     </Grid>

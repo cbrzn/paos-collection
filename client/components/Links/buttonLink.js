@@ -16,8 +16,9 @@ ButtonLink.defaultProps = {
 }
 
 ButtonLink.propTypes = {
-    title: PropTypes.object.isRequired,
-    to: PropTypes.object.isRequired,
+    title: PropTypes.string.isRequired,
+    to: PropTypes.string.isRequired,
+    color: PropTypes.string,
 }
 
 export default ButtonLink
