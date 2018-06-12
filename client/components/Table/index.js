@@ -10,6 +10,7 @@ import {
     TablePagination,
 } from '@material-ui/core';
 import PaginationActions from './paginationActions';
+import PropTypes from 'prop-types';
 
 class _Table extends Component {
 
