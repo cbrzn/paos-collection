@@ -29,6 +29,7 @@ class Home extends Component {
 
     state = {
         items: [],
+        images: [],
         total: 10, // Numero total de paginas por paginacion
         display: 3, // Cuantos se van a mostrar
         number: 1, // Pagina actual
@@ -41,7 +42,11 @@ class Home extends Component {
 
     componentDidMount() {
         // Fetch() ...
-        this.setState({items:[1,2,3,4,5,6]});
+        this.setState({
+            items:[1,3],
+            images: ['images.jpg',
+                    'w.jpg']
+        });
     }
 
     setPage = (number) => {
@@ -70,22 +75,21 @@ class Home extends Component {
                     </Typography>
                 </Grid>
                 <Grid item xs={12}>
-                    
-                        { (this.state.fetching) ? (
-                            <Grid container justify="center" className={classes.list}>
-                                <Grid item lg={12} >
-                                    <LinearProgress /> 
-                                </Grid>
+                    { (this.state.fetching) ? (
+                        <Grid container justify="center" className={classes.list}>
+                            <Grid item lg={12} >
+                                <LinearProgress /> 
                             </Grid>
-                        ) : (
-                            <Grid container className={classes.list}>
-                            {this.state.items.map((item, i) => (                                
-                                <Grid item className={classes.item} lg={3} key={i}>
-                                    <Item data={item}/>
-                                </Grid>                                
-                            ))}
-                            </Grid>            
-                        )}
+                        </Grid>
+                    ) : (
+                        <Grid container className={classes.list}>
+                        {this.state.items.map((item, i) => (                                
+                            <Grid item className={classes.item} lg={3} key={i}>
+                                <Item data={item} test={this.state.images}/>
+                            </Grid>                                
+                        ))}
+                        </Grid>            
+                    )}
                 </Grid>
                 <Grid item lg={10} style={{display:'flex',justifyContent:'center'}}>
                         <Pagination

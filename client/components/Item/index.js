@@ -8,7 +8,8 @@ import {
     Typography,
     ButtonBase,
 } from '@material-ui/core';
-import Image from '../../assets/images/Pizza-con-pepperoni.jpg';
+
+import Image from '../../assets/images/images.jpg';
 import { Link } from 'react-router-dom';
 
 const styles = theme => ({
@@ -76,8 +77,9 @@ const styles = theme => ({
 
 // ITEMS 
 class Item extends Component {
-
+    
     render() {
+        const path = require.context('../../assets/images/', true);
         const { classes, data } = this.props;
 
         return (
@@ -94,7 +96,7 @@ class Item extends Component {
                     <span
                         className={classes.imageSrc}
                         style={{
-                            backgroundImage: `url(${Image})`,
+                            backgroundImage: `url(${path(this.props.test[0], true)})`,
                         }}
                     />
                     <span className={classes.imageBackdrop} />
