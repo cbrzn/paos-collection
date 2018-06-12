@@ -6,24 +6,7 @@ import {
 } from '@material-ui/core';
 import { Item, SearchBar, Pagination } from '../../components';
 import LinearProgress from '@material-ui/core/LinearProgress';
-
-const styles = (theme) => ({
-    root: {
-        flexGrow: 1,
-    },
-    title: {
-        display: 'flex',
-        justifyContent: 'center',
-        marginTop: theme.spacing.unit*2,
-    },
-    list: {
-        paddingLeft: theme.spacing.unit*2,
-        paddingRight: theme.spacing.unit*2,
-    },
-    item: {
-        padding: `${theme.spacing.unit*2}px ${theme.spacing.unit*2}px`
-    },
-})
+import styles from './styles'
 
 class Home extends Component {
 

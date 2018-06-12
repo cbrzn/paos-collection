@@ -8,6 +8,7 @@ import {
     IconButton,
 } from '@material-ui/core';
 import Image from '../../assets/images/Pizza-con-pepperoni.jpg';
+import PropTypes from 'prop-types';
 
 const styles = theme => ({
     container: {
@@ -35,7 +36,7 @@ class ImageViewer extends Component {
     }
 
     componentDidMount() {
-
+        
     }
 
     render() {
@@ -65,6 +66,10 @@ class ImageViewer extends Component {
             </Grid>
         );
     }
+}
+
+ImageViewer.propTypes = {
+    classes: PropTypes.object.isRequired,
 }
 
 /*

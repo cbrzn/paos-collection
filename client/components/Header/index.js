@@ -6,29 +6,24 @@ import {
     Typography,
     Toolbar,
 } from '@material-ui/core';
-import Options from './options';
+import Options from './components';
 import { withRouter } from 'react-router';
+import { TypographyLink } from '../Links';
+import styles from './styles';
 
-const styles = () => ({
-    nav: {
-
-    },
-});
-
-function Header({ classes, user }) {
+function Header({ classes,user }) {
 
     return (
         <AppBar
             position="static"
-            className={classes.nav}
         >
             <Toolbar style={{justifyContent:'space-between'}}>
-                <Typography
+                <TypographyLink
                     variant="title"
-                    color="inherit"                    
-                >
-                    LOGO
-                </Typography>
+                    to="/"
+                    title="Pao's"
+                    className={classes.title}
+                />
                 <Options user={{ type: 'invited' }} />
             </Toolbar>
         </AppBar>
@@ -36,8 +31,8 @@ function Header({ classes, user }) {
 }
 
 Header.propTypes = {
-    classes: PropTypes.object.isRequired,
-    user: PropTypes.object,
+    classes: PropTypes.object,
+    // user: PropTypes.object.isRequired,
 }
 
-export default withRouter(withStyles(styles)(Header));
+export default withStyles(styles)(Header);

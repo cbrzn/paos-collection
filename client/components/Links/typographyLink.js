@@ -10,31 +10,33 @@ const styles = () => ({
             opacity:0.8,
         }
     }
-})
+});
 
-const TypographyLink = ({ classes, title, to, color, variant}) => (
+const TypographyLink = ({ title, to, className, color, variant }) => (
     <Link to={to} style={{
         textDecoration: 'none',
     }}>
         <Typography
+            className={className} 
             variant={variant}
-            className={classes.typography} 
-            style={{ color: color }}> {title} 
+            color={color}
+            > {title} 
         </Typography>
+    
     </Link>
 );
 
 TypographyLink.defaultProps = {
-    color: 'white',
+    color: 'inherit',
     variant: 'body1',
 }
 
 TypographyLink.propTypes = {
-    classes: PropTypes.object.isRequired,
     title: PropTypes.string.isRequired,
     to: PropTypes.string.isRequired,
+    className: PropTypes.string,
     color: PropTypes.string,
     variant: PropTypes.string,
 }
 
-export default withStyles(styles)(TypographyLink);
+export default TypographyLink;
