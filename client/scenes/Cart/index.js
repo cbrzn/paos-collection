@@ -1,18 +1,27 @@
 import React, { Component } from 'react';
-import withStyles from '@material-ui/core/styles/withStyles';
 import {
     Grid,
     Paper,
-    Table,
-    TableHead,
-    TableRow,
-    TableCell,
-    TableBody,
-    TableFooter,
-    TablePagination,
 } from '@material-ui/core';
-import styles from './styles';
+import withStyles from '@material-ui/core/styles/withStyles';
 import { Table } from '../../components';
+import styles from './styles';
+
+const tableFormat = [
+    {
+        name: 'Product', 
+        numeric: false
+    },{ 
+        name: 'Price',
+        numeric: true
+    },{
+        name: 'Quantity', 
+        numeric: true
+    },{
+        name: 'Total',
+        numeric:true
+    }
+];
 
 class Cart extends Component {
 
@@ -24,12 +33,10 @@ class Cart extends Component {
     }
 
     componentDidMount() {
-        let { items } = this.props;
-        let count = items.length;
-
+        let { items } = this.props;        
         this.setState({
             items: items,
-            count: count, 
+            count: items.length, 
         });
     }
 
@@ -47,7 +54,7 @@ class Cart extends Component {
                         <Paper className={classes.paper}>
                             <Table 
                                 items={items}
-                                keys={[{name:'Product', numeric:false},{name:'Price',numeric:true},{name:'Quantity',numeric:true},{name:'Total',numeric:true}]}
+                                tableFormat={tableFormat}
                             />
                         </Paper>
                     </Grid>

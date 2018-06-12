@@ -28,7 +28,7 @@ const data = [
   createData('Ice cream sandwich', 237, 3),
   createData('Eclair', 262, 12),
   createData('Cupcake', 305, 5),
-  createData('Gingerbread', 356, 312),
+  createData('Coca cola', 356, 312),
 ];
 function CartTest() {
 

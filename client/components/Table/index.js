@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
 import {
-    Grid,
-    Paper,
     Table,
     TableHead,
     TableRow,
@@ -11,10 +9,9 @@ import {
     TableFooter,
     TablePagination,
 } from '@material-ui/core';
-import styles from './styles';
-import PaginationActions from '../../paginationActions';
+import PaginationActions from './paginationActions';
 
-class MyTable extends Component {
+class _Table extends Component {
 
     state = {
         items: [],
@@ -25,12 +22,11 @@ class MyTable extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-
-        let { keys, items } = nextProps;
+        let { tableFormat, items } = nextProps;
         let count = items.length;
-        console.log(items)
+        
         this.setState({
-            keys: keys,
+            keys: tableFormat,
             items: items,
             count: count, 
         });
@@ -81,13 +77,18 @@ class MyTable extends Component {
                             page={currentPage}
                             onChangePage={this.handleChangePage}
                             onChangeRowsPerPage={this.handleChangeRowsPerPage}
-                            ActionsComponent={TablePaginationActions}
+                            ActionsComponent={PaginationActions}
                         />                                     
                     </TableRow>
                 </TableFooter>
             </Table>
         )
     }
-} 
+}
 
-export default MyTable;
+_Table.propTypes = {
+    tableFormat: PropTypes.object.isRequired,
+    items: PropTypes.object.isRequired,
+}
+
+export default _Table;
