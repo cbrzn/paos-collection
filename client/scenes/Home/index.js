@@ -3,6 +3,10 @@ import { withStyles } from '@material-ui/core/styles';
 import {
     Grid, 
     Typography,
+    Table, 
+    TableFooter,
+    TableRow,
+    TablePagination
 } from '@material-ui/core';
 import { Item, SearchBar, Pagination } from '../../components';
 import LinearProgress from '@material-ui/core/LinearProgress';
@@ -71,13 +75,13 @@ class Home extends Component {
                         )}
                 </Grid>
                 <Grid item lg={10} style={{display:'flex',justifyContent:'center'}}>
-                        <Pagination
-                            total={10}
-                            current={this.state.number}
-                            display={this.state.display}
-                            onChange={this.setPage}
-                            stylePrimary={{color:'blue'}}
-                        />
+                    <Pagination
+                        total={10}
+                        current={this.state.number}
+                        display={this.state.display}
+                        onChange={this.setPage}
+                        stylePrimary={{color:'blue'}}
+                    />
                 </Grid>
             </Grid>
             </div>

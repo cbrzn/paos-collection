@@ -4,14 +4,6 @@ import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import PropTypes from 'prop-types';
 
-const styles = () => ({
-    typography: {
-        '&:hover': {
-            opacity:0.8,
-        }
-    }
-});
-
 const TypographyLink = ({ title, to, className, color, variant }) => (
     <Link to={to} style={{
         textDecoration: 'none',

@@ -10,35 +10,8 @@ import {
     Divider,
 } from '@material-ui/core';
 // import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Input from '../../components/Input';
-import ImageViewer from '../../components/ImageViewer';
-
-const styles = theme => ({
-    root: {
-        margin: `${theme.spacing.unit*4}px ${theme.spacing.unit*8}px 0px`,
-    },
-    title: {
-        marginTop: theme.spacing.unit*4,
-    },
-    price: {
-        marginTop: theme.spacing.unit,        
-    },
-    description: {
-        marginTop: theme.spacing.unit*3,
-    },
-    expand: {
-        flexGrow:1,
-        width:'100%',
-        display:'flex',
-        justifyContent:'flex-start',
-    },
-    actions: {
-        display:'flex',        
-        justifyContent: 'flex-end',
-        alignItems: 'center',            
-        paddingRight: theme.spacing.unit*2,
-    },
-});
+import { BootInput, ImageViewer } from '../../components';
+import styles from './styles';
 
 class Details extends Component {
     
@@ -103,7 +76,7 @@ class Details extends Component {
                                 </Collapse>
                             </div>
                             <div className={classes.actions}>
-                                <Input />
+                                <BootInput />
                                 <Button
                                     color="primary"
                                     variant="raised"
