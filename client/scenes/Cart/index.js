@@ -33,9 +33,13 @@ class Cart extends Component {
     }
 
     componentDidMount() {
-        let { items } = this.props;        
+        let { items } = this.props;
+        let totalItems = items.map(item => ({
+            ...item,
+            total: item.price*item.quantity,
+        }));
         this.setState({
-            items: items,
+            items: totalItems,
             count: items.length, 
         });
     }
@@ -45,7 +49,7 @@ class Cart extends Component {
 
     render() {
         const { classes } = this.props;
-        const { currentPage, items, rowsPerPage, count } = this.state; 
+        const { currentPage, items, rowsPerPage, count } = this.state;
 
         return (
             <div className={classes.root}>

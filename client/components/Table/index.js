@@ -88,8 +88,8 @@ class _Table extends Component {
 }
 
 _Table.propTypes = {
-    tableFormat: PropTypes.object.isRequired,
-    items: PropTypes.object.isRequired,
+    tableFormat: PropTypes.array.isRequired,
+    items: PropTypes.array.isRequired,
 }
 
 export default _Table;

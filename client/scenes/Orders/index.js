@@ -10,39 +10,40 @@ import styles from './styles';
 const tableFormat = [
     {
         name: 'Order',
-        numeric: true
+        numeric: false
     }, {
         name: 'Username',
         numeric: false,
     }, {
-        name: 'No se que dice',
-        numeric: false,
+        name: 'Date',
+        numeric: true,
     }, {
         name: 'Status',
-        numeric: false,
+        numeric: true,
     }, {
         name: 'Total',
         numeric: true,
-    }, {
-        name: 'Details',
-        numeric: false,
-    }
+    }, 
+    // {
+    //     name: 'Details',
+    //     numeric: false,
+    // }
 ];
 
 class Orders extends Component {
 
     state = {
-        items: [],
+        orders: [],
         currentPage: 0,
         count: 0,
         rowsPerPage: 5,
     }
 
     componentDidMount() {
-        let { items } = this.props;
+        let { orders } = this.props;
         this.setState({
-            items: items,
-            count: items.length,
+            orders: orders,
+            count: orders.length,
         });
     }
 
@@ -51,7 +52,7 @@ class Orders extends Component {
 
     render() {
         const { classes } = this.props;
-        const { currentPage, items, rowsPerPage, count } = this.state;
+        const { currentPage, orders, rowsPerPage, count } = this.state;
 
         return (
             <div className={classes.root}>
@@ -59,7 +60,7 @@ class Orders extends Component {
                     <Grid item lg={8} md={8} sm={8} xs={8}>
                         <Paper className={classes.paper}>
                             <Table
-                                items={items}
+                                items={orders}
                                 tableFormat={tableFormat}
                             />
                         </Paper>
