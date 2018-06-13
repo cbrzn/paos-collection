@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import { Header } from './components';
 import withRoot from './withRoot';
 import { Home, Login, Details, Cart } from './scenes';
+import UploadForm from './components/forms/UploadForm';
 
 
 // For testing cart scene
@@ -47,6 +48,7 @@ class App extends Component {
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/details" component={Details} />
                 <Route exact path="/cart" component={CartTest} />
+                <Route exact path="/product/new" component={UploadForm} />
                 {/* <PrivateRoute path="/accout" component={} /> */}
             </Switch>
         </div>

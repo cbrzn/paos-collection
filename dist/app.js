@@ -36,7 +36,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(morgan('combined'));
 
-// app.use('/',require('./controllers/'));
+app.use('/',require('./controllers/'));
 
 app.get('*', (_, res) => {
    res.sendFile(path.join(__dirname, 'index.html'));

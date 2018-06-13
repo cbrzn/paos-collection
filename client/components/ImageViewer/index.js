@@ -7,7 +7,7 @@ import {
     GridListTileBar,
     IconButton,
 } from '@material-ui/core';
-import Image from '../../assets/images/Pizza-con-pepperoni.jpg';
+import Image from '../../assets/images/w.jpg';
 import PropTypes from 'prop-types';
 
 const styles = theme => ({
@@ -36,7 +36,7 @@ class ImageViewer extends Component {
     }
 
     componentDidMount() {
-        
+        console.log('t')
     }
 
     render() {
@@ -49,9 +49,6 @@ class ImageViewer extends Component {
                     <img
                         src={images[selectedImage].url}
                         alt="Image title"
-                        style={{
-                            width: '100%'
-                        }}
                     />
                 </Grid>
                 <Grid item lg={9} mg={9} sm={9} xs={9}>

@@ -30,9 +30,6 @@ class Details extends Component {
     };
 
     componentDidMount() {
-        this.setState({
-            // ITEM INFO
-        });
     }
 
     render() {

@@ -24,26 +24,32 @@ class Home extends Component {
     }
 
     handleSearch = (value) => {
-        console.log(value);
+        console.log(value)
     }
 
     componentDidMount() {
-        // Fetch() ...
-        this.setState({
-            items:[1,3],
-            images: ['images.jpg',
-                    'w.jpg']
-        });
+        fetch('./product/all').then(response => response.json())
+        .then(data => {
+            let images = [], items = []
+            for (var i in data.products) {
+                images.push(data.products[i].img1)
+                items.push(data.products[i].name)
+            }
+            this.setState({
+                items,
+                images
+            })
+        })
     }
 
     setPage = (number) => {
-        this.setState({ number, fetching:true });
-        setInterval(() => this.setState({ fetching: false }), 3000);
+        this.setState({ number, fetching:true })
+        setInterval(() => this.setState({ fetching: false }), 3000)
         // Move between array elements... Change array elements... IDK, yet.
     }
 
     render() {
-        const { classes } = this.props;
+        const { classes } = this.props
 
         return (
             <div className={classes.root}>
@@ -71,8 +77,8 @@ class Home extends Component {
                     ) : (
                         <Grid container className={classes.list}>
                         {this.state.items.map((item, i) => (                                
-                            <Grid item className={classes.item} lg={3} key={i}>
-                                <Item data={item} test={this.state.images}/>
+                            <Grid item lg={3} key={i}>
+                                <Item data={item} images={this.state.images} index={i}/>
                             </Grid>                                
                         ))}
                         </Grid>            
