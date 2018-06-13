@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import {
+    withStyles,
     Grid,
     Paper,
     Button,
 } from '@material-ui/core';
-import withStyles from '@material-ui/core/styles/withStyles';
+import PropTypes from 'prop-types';
 import { Table } from '../../components';
 import styles from './styles';
 
@@ -81,5 +82,9 @@ class Cart extends Component {
         )
     }
 }
+
+Cart.propTypes = {
+    items: PropTypes.array.isRequired,
+};
 
 export default withStyles(styles)(Cart);

@@ -1,19 +1,19 @@
 import React, { Component, Fragment } from 'react';
-import { withStyles } from '@material-ui/core/styles';
 import {
+    withStyles,
     Grid,
     TextField,
     Button,
     Typography,
     Paper,
     CircularProgress,
+    IconButton,
+    InputAdornment,
 } from '@material-ui/core';
-import IconButton from '@material-ui/core/IconButton';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import { Visibility, VisibilityOff, } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import TypographyLink from '../../components/TypographyLink';
 import styles from './styles';
 
 class Login extends Component {
@@ -40,12 +40,13 @@ class Login extends Component {
                         <Paper className={classes.paper}>
                             <form noValidate autoComplete="off">
                                 <TextField
+                                    autoFocus
                                     id="username"
                                     label="Username"
                                     margin="normal"
                                     value={props.username}
                                     fullWidth
-                                    onChange={handleTextChange('username')}                                    
+                                    onChange={handleTextChange('username')}
                                 />
                                 <TextField
                                     id="password"
@@ -83,7 +84,7 @@ class Login extends Component {
                                         )}
                                     <Typography variant="caption" className={classes.caption}>
                                         Don't have an account?
-                                        <Link to="/" style={{ textDecoration: 'none' }}
+                                        <Link to="/signup" style={{ textDecoration: 'none' }}
                                         > Sign Up! </Link>
                                     </Typography>
                                 </div>

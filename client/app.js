@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 // import PrivateRoute from './util/privateRoute';
 import { Header } from './components';
 import withRoot from './withRoot';
-import { Home, Login, Details, Cart, Orders } from './scenes';
+import { Home, Login, Details, Cart, Orders, SignUp } from './scenes';
 
 
 // For testing cart scene
@@ -12,6 +12,7 @@ function createData(product, price, quantity ) {
     id += 1;
     return { id, product, price, quantity };
 }
+// For testing orders scene
 let id2=0;
 function createOrders(username,date,status,total) {
     id2+=1;
@@ -66,8 +67,9 @@ class App extends Component {
         <div>
             <Header />
             <Switch>
-                <Route exact path="/" component={Home} />
+                <Route exact path="/" component={Home} />            
                 <Route exact path="/login" component={Login} />
+                <Route exact path="/signup" component={SignUp} />
                 <Route exact path="/details" component={Details} />
                 <Route exact path="/cart" component={CartTest} />
                 <Route exact path="/orders" component={OrdersTest} />

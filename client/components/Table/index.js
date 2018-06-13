@@ -56,12 +56,12 @@ class _Table extends Component {
                 <TableBody>
                     {
                         items.slice(currentPage*rowsPerPage,currentPage*rowsPerPage+rowsPerPage)
-                        .map(item => (                                        
-                            <TableRow key={item.id}>
-                                {keys.map((key,i) => (
+                        .map((item,i) => (                                        
+                            <TableRow key={i}>
+                                {keys.map((key,j) => (
                                     <TableCell 
-                                        numeric={key.numeric}
-                                        key={i}
+                                        key={`${i}${j}`}
+                                        numeric={key.numeric}                                        
                                     > {item[key.name.toLowerCase()]} 
                                     </TableCell>
                                 ))}

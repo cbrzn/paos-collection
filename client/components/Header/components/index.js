@@ -5,7 +5,7 @@ import InvitedOptions from './invited';
 export default withRouter(({ user, location }) => {
     const { pathname } = location;
 
-    if(pathname !== '/login') {
+    if(pathname !== '/login' && pathname !== '/signup') {
         switch (user.type) {
             case 'invited': {
                 return <InvitedOptions />

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import {
+    withStyles,
     Grid,
     Paper,
 } from '@material-ui/core';
-import withStyles from '@material-ui/core/styles/withStyles';
+import PropTypes from 'prop-types';
 import { Table } from '../../components';
 import styles from './styles';
 
@@ -70,5 +71,10 @@ class Orders extends Component {
         )
     }
 }
+
+Orders.propTypes = {
+    orders: PropTypes.array.isRequired,
+};
+
 
 export default withStyles(styles)(Orders);

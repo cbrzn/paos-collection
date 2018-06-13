@@ -7,17 +7,16 @@ import {
     Toolbar,
 } from '@material-ui/core';
 import Options from './components';
-import { withRouter } from 'react-router';
-import { TypographyLink } from '../Links';
+import TypographyLink from '../TypographyLink';
 import styles from './styles';
 
-function Header({ classes,user }) {
+function Header({ classes, user }) {
 
     return (
         <AppBar
             position="static"
         >
-            <Toolbar style={{justifyContent:'space-between'}}>
+            <Toolbar className={classes.toolbar}>
                 <TypographyLink
                     variant="title"
                     to="/"
