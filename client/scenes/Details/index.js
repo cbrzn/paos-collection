@@ -41,7 +41,7 @@ class Details extends Component {
 
         return ( 
             <div className={classes.root}>
-                <Paper elevation={4}>
+                <Paper elevation={4} className={classes.paper}>
                     <Grid container justify="center">
                         <Grid item lg={6} md={6} sm={6} xs={12}>
                             <ImageViewer />

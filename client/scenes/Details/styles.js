@@ -1,6 +1,9 @@
 export default (theme) => ({
     root: {
-        margin: `${theme.spacing.unit*4}px ${theme.spacing.unit*8}px 0px`,
+        flexGrow: 1,
+    },
+    paper: {
+        margin: `${theme.spacing.unit * 4}px ${theme.spacing.unit * 8}px 0px`,
     },
     title: {
         marginTop: theme.spacing.unit*4,
