@@ -7,8 +7,9 @@ import {
     GridListTileBar,
     IconButton,
 } from '@material-ui/core';
-import Image from '../../assets/images/Pizza-con-pepperoni.jpg';
+import Image from '../../assets/images/w.jpg';
 import PropTypes from 'prop-types';
+import queryString from 'query-string'
 
 const styles = theme => ({
     container: {
@@ -31,12 +32,25 @@ const styles = theme => ({
 class ImageViewer extends Component {
 
     state = {
-        images: [{ url: Image, title: 1 }, { url: Image, title: 2 }, { url: Image, title: 3 }, { url: Image, title: 4 }, { url: Image, title: 5 }, { url: Image, title: 6 }],
-        selectedImage: 1,
+        images: [{url: Image, title: 'test'}],
+        selectedImage: 0,
     }
 
     componentDidMount() {
-        
+        const query = queryString.parse(location.search)
+        console.log(query)
+        const id = query.id
+        console.log(query.id)
+        fetch('./product/show', {
+            method: 'post',
+            headers: {
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify({ id })
+        }).then(response => response.json())
+            .then(product => {
+              console.log([product])
+            })
     }
 
     render() {
@@ -49,9 +63,6 @@ class ImageViewer extends Component {
                     <img
                         src={images[selectedImage].url}
                         alt="Image title"
-                        style={{
-                            width: '100%'
-                        }}
                     />
                 </Grid>
                 <Grid item lg={9} mg={9} sm={9} xs={9}>

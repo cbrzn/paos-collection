@@ -12,27 +12,37 @@ import {
 // import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { BootInput, ImageViewer } from '../../components';
 import styles from './styles';
+import queryString from 'query-string'
 
 class Details extends Component {
     
     state = {
-        title: 'Title lazo',
-        description: 'Best lazo ever made by Hefesto with the skin of a unicorn, stylized by Afrodita, and some other greek Gods who helps for this being possible',
-        price:134,
-        available:1,
-        expanded: null,
+        title: '',
+        description: '',
+        price: 0,
+        available: 0,
+        expanded: true,
     }
 
-    handleChange = () => {
-        this.setState({
-            expanded: !this.state.expanded
-        });
-    };
 
     componentDidMount() {
-        this.setState({
-            // ITEM INFO
-        });
+        const query = queryString.parse(location.search)
+        console.log(query)
+        const id = query.id
+        console.log(query.id)
+        fetch('./product/show', {
+            method: 'post',
+            headers: {
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify({ id })
+        })
+        .then(response => response.json())
+        .then(product => {
+            this.setState({
+                title: product.name
+            })
+        })
     }
 
     render() {

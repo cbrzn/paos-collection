@@ -16,6 +16,7 @@ class Home extends Component {
 
     state = {
         items: [],
+        images: [],
         total: 10, // Numero total de paginas por paginacion
         display: 3, // Cuantos se van a mostrar
         number: 1, // Pagina actual
@@ -23,22 +24,32 @@ class Home extends Component {
     }
 
     handleSearch = (value) => {
-        console.log(value);
+        console.log(value)
     }
 
     componentDidMount() {
-        // Fetch() ...
-        this.setState({items:[1,2,3,4,5,6]});
+        fetch('./product/all').then(response => response.json())
+        .then(data => {
+            let images = [], items = []
+            for (var i in data.products) {
+                images.push(data.products[i].img1)
+                items.push(data.products[i].id)
+            }
+            this.setState({
+                items,
+                images
+            })
+        })
     }
 
     setPage = (number) => {
-        this.setState({ number, fetching:true });
-        setInterval(() => this.setState({ fetching: false }), 3000);
+        this.setState({ number, fetching:true })
+        setInterval(() => this.setState({ fetching: false }), 3000)
         // Move between array elements... Change array elements... IDK, yet.
     }
 
     render() {
-        const { classes } = this.props;
+        const { classes } = this.props
 
         return (
             <div className={classes.root}>
@@ -57,22 +68,21 @@ class Home extends Component {
                     </Typography>
                 </Grid>
                 <Grid item xs={12}>
-                    
-                        { (this.state.fetching) ? (
-                            <Grid container justify="center" className={classes.list}>
-                                <Grid item lg={12} >
-                                    <LinearProgress /> 
-                                </Grid>
+                    { (this.state.fetching) ? (
+                        <Grid container justify="center" className={classes.list}>
+                            <Grid item lg={12} >
+                                <LinearProgress /> 
                             </Grid>
-                        ) : (
-                            <Grid container className={classes.list}>
-                            {this.state.items.map((item, i) => (                                
-                                <Grid item className={classes.item} lg={3} key={i}>
-                                    <Item data={item}/>
-                                </Grid>                                
-                            ))}
-                            </Grid>            
-                        )}
+                        </Grid>
+                    ) : (
+                        <Grid container className={classes.list}>
+                        {this.state.items.map((item, i) => (                                
+                            <Grid item lg={3} key={i}>
+                                <Item data={item} images={this.state.images} id={this.state.items[i]} index={i}/>
+                            </Grid>                                
+                        ))}
+                        </Grid>            
+                    )}
                 </Grid>
                 <Grid item lg={10} style={{display:'flex',justifyContent:'center'}}>
                     <Pagination

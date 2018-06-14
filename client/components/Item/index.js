@@ -4,7 +4,8 @@ import {
     Typography,
     ButtonBase,
 } from '@material-ui/core';
-import Image from '../../assets/images/Pizza-con-pepperoni.jpg';
+
+// import Image from 'https://res.cloudinary.com/zingaring/image/upload/v1525380478/euzindbrfij237pkbqo2.jpg';
 import { Link } from 'react-router-dom';
 
 const styles = theme => ({
@@ -72,14 +73,14 @@ const styles = theme => ({
 
 // ITEMS 
 class Item extends Component {
-
+    
     render() {
         const { classes, data } = this.props;
 
         return (
             <div className={classes.root}>
                 <ButtonBase
-                    component={Link} to="/details"
+                    component={Link} to={`/details?id=${this.props.id}`}
                     focusRipple
                     className={classes.image}
                     focusVisibleClassName={classes.focusVisible}
@@ -90,21 +91,9 @@ class Item extends Component {
                     <span
                         className={classes.imageSrc}
                         style={{
-                            backgroundImage: `url(${Image})`,
+                            backgroundImage: `url(${this.props.images[this.props.index]})`,
                         }}
                     />
-                    <span className={classes.imageBackdrop} />
-                    <span className={classes.imageButton}>
-                        <Typography
-                            component="span"
-                            variant="subheading"
-                            color="inherit"
-                            className={classes.imageTitle}
-                        >
-                            {data}
-                            <span className={classes.imageMarked} />
-                        </Typography>
-                    </span>
                 </ButtonBase>
             </div>
         );
