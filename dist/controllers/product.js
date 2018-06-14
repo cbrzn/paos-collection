@@ -13,13 +13,24 @@ router.get('/all', (req, res) => {
     })
 })
 
+router.post('/show', (req, res) => {
+    console.log(req.body)
+    product.show(req.body.id).then(product => {
+        console.log(product)
+        res.send({
+            status: 200,
+            product
+        })
+    })
+})
+
 const upload = multer({dest: "./uploads/"});
 
 cloudinary.config({
     cloud_name: 'zingaring',
     api_key: '195729922234217',
     api_secret: 'rul2JCiaHBPULlxuKDd04N5zFJ8'
- });
+ })
  
 
 router.post('/new', upload.array('files[]'), async (req, res) => {

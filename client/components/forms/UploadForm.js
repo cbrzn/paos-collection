@@ -19,7 +19,6 @@ class UploadForm extends React.Component {
     body.append('stock', this.stock.current.value);
     body.append('price', this.price.current.value);
     body.append('description', this.description.current.value);
-    console.log(body)
     fetch('/product/new', {
         method: 'post',
         body

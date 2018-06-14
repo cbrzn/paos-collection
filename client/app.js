@@ -30,7 +30,7 @@ const data = [
   createData('Eclair', 262, 12),
   createData('Cupcake', 305, 5),
   createData('Coca cola', 356, 312),
-];
+]
 function CartTest() {
 
     return (
@@ -46,13 +46,13 @@ class App extends Component {
             <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/login" component={Login} />
-                <Route exact path="/details" component={Details} />
+                <Route path="/details" component={Details} />
                 <Route exact path="/cart" component={CartTest} />
                 <Route exact path="/product/new" component={UploadForm} />
                 {/* <PrivateRoute path="/accout" component={} /> */}
             </Switch>
         </div>
-        );
+        )
     }
 }
 

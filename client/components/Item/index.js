@@ -75,13 +75,12 @@ const styles = theme => ({
 class Item extends Component {
     
     render() {
-        const path = require.context('../../assets/images/', true);
         const { classes, data } = this.props;
 
         return (
             <div className={classes.root}>
                 <ButtonBase
-                    component={Link} to="/details"
+                    component={Link} to={`/details?id=${this.props.id}`}
                     focusRipple
                     className={classes.image}
                     focusVisibleClassName={classes.focusVisible}
