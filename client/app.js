@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import { Header } from './components';
 import withRoot from './withRoot';
 import { Home, Login, Details, Cart, Orders, SignUp } from './scenes';
-import UploadForm from './components/forms/UploadForm';
+import UploadForm from './components/uploadForm';
 
 
 // For testing cart scene

@@ -1,4 +1,4 @@
-export default (theme) => ({
+export default () => ({
     root: {
         display: 'flex',
         alignItems: 'center',
@@ -8,9 +8,9 @@ export default (theme) => ({
         marginRight: 10,
     },
     link: {
-        color:'white',
+        color: 'white',
         '&:hover': {
-            opacity:0.8,
+            opacity: 0.8,
         }
     }
-})
+});

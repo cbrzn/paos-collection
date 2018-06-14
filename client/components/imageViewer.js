@@ -7,7 +7,7 @@ import {
     GridListTileBar,
     IconButton,
 } from '@material-ui/core';
-import Image from '../../assets/images/w.jpg';
+import Image from '../assets/images/w.jpg';
 import PropTypes from 'prop-types';
 import queryString from 'query-string'
 

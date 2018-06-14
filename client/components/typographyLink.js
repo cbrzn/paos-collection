@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
-import withStyles from '@material-ui/core/styles/withStyles';
+// import withStyles from '@material-ui/core/styles/withStyles';
 import PropTypes from 'prop-types';
 
 const TypographyLink = ({ title, to, className, color, variant }) => (
