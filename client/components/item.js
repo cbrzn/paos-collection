@@ -7,6 +7,7 @@ import {
 
 // import Image from 'https://res.cloudinary.com/zingaring/image/upload/v1525380478/euzindbrfij237pkbqo2.jpg';
 import { Link } from 'react-router-dom';
+// import ImageTest from '../assets/images/w.jpg'
 
 const styles = theme => ({
     root: {
@@ -43,7 +44,6 @@ const styles = theme => ({
         top: 0,
         bottom: 0,
         backgroundSize: 'cover',
-        // backgroundPosition: 'center 40%',
     },
     focusVisible: {},
     imageBackdrop: {

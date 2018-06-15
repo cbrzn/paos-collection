@@ -28,18 +28,18 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        fetch('./product/all').then(response => response.json())
-        .then(data => {
-            let images = [], items = []
-            for (var i in data.products) {
-                images.push(data.products[i].img1)
-                items.push(data.products[i].id)
-            }
+        // fetch('./product/all').then(response => response.json())
+        // .then(data => {
+        //     let images = [], items = []
+        //     for (var i in data.products) {
+        //         images.push(data.products[i].img1)
+        //         items.push(data.products[i].id)
+        //     }
             this.setState({
-                items,
-                images
+                items:[1,2,3,4,5,6,7,8,9],
+                // images
             })
-        })
+        // })
     }
 
     setPage = (number) => {
