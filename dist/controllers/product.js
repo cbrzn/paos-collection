@@ -5,21 +5,36 @@ const product = require('./../helpers/product_db')
 const router = express.Router()
 
 router.get('/all', (req, res) => {
-    product.all().then(products => {
+    var arr_img = []
+    product.all().then(async products => {
+        for (var i in products) {
+           await product.images(products[i].id).then( images => {
+                 arr_img.push(images[0])
+            }).catch(err => {
+                res.send({ status: 404 })
+            })
+        }
         res.send({
             status: 200,
-            products
+            products,
+            image:arr_img
         })
+    }).catch(err => { 
+       res.send({status: 500})
     })
 })
 
 router.post('/show', (req, res) => {
-    console.log(req.body)
-    product.show(req.body.id).then(product => {
-        console.log(product)
-        res.send({
-            status: 200,
-            product
+    const { id } = req.body
+    product.show(id).then(prod => {
+        product.images(id).then(images => {
+            res.send({
+                status: 200,
+                prod,
+                images
+            })
+        }).catch(err => {
+            res.send({ status: 404 })
         })
     })
 })

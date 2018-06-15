@@ -32,7 +32,7 @@ class Home extends Component {
         .then(data => {
             let images = [], items = []
             for (var i in data.products) {
-                images.push(data.products[i].img1)
+                images.push(data.image[i])
                 items.push(data.products[i].id)
             }
             this.setState({
@@ -78,7 +78,7 @@ class Home extends Component {
                         <Grid container className={classes.list}>
                         {this.state.items.map((item, i) => (                                
                             <Grid item lg={3} key={i}>
-                                <Item data={item} images={this.state.images} id={this.state.items[i]} index={i}/>
+                                <Item data={item} image={this.state.images[i]} id={this.state.items[i]} index={i}/>
                             </Grid>                                
                         ))}
                         </Grid>            

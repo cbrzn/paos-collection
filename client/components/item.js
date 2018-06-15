@@ -6,7 +6,7 @@ import {
 } from '@material-ui/core';
 
 // import Image from 'https://res.cloudinary.com/zingaring/image/upload/v1525380478/euzindbrfij237pkbqo2.jpg';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 const styles = theme => ({
     root: {
@@ -74,30 +74,23 @@ const styles = theme => ({
 // ITEMS 
 class Item extends Component {
     
+    productDetails = () => {
+        this.props.history.push({
+            pathname:'/details',
+            state: {id:this.props.id, image:this.props.image}
+        })
+    }
     render() {
         const { classes, data } = this.props;
 
         return (
-            <div className={classes.root}>
-                <ButtonBase
-                    component={Link} to={`/details?id=${this.props.id}`}
-                    focusRipple
-                    className={classes.image}
-                    focusVisibleClassName={classes.focusVisible}
-                    style={{
-                        width: '100%',
-                    }}
-                >
-                    <span
-                        className={classes.imageSrc}
-                        style={{
-                            backgroundImage: `url(${this.props.images[this.props.index]})`,
-                        }}
-                    />
+            <div>
+                <ButtonBase onClick={this.productDetails}>
+                    <img style={{width:300, height:200}} src={this.props.image.url}/>
                 </ButtonBase>
             </div>
         );
     }
 }
 
-export default withStyles(styles)(Item)
+export default withRouter(Item)

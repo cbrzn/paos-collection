@@ -16,7 +16,7 @@ const styles = theme => ({
         padding:`${theme.spacing.unit*4}px 0px`,
     },
     main: {
-        
+        width: 800,
     },
     group: {
 
@@ -32,15 +32,13 @@ const styles = theme => ({
 class ImageViewer extends Component {
 
     state = {
-        images: [{url: Image, title: 'test'}],
-        selectedImage: 0,
+        loaded: false,
+        images: [],
+        selectedImage: [],
     }
 
     componentDidMount() {
-        const query = queryString.parse(location.search)
-        console.log(query)
-        const id = query.id
-        console.log(query.id)
+        const id = this.props.id
         fetch('./product/show', {
             method: 'post',
             headers: {
@@ -48,16 +46,40 @@ class ImageViewer extends Component {
             },
             body: JSON.stringify({ id })
         }).then(response => response.json())
-            .then(product => {
-              console.log([product])
-            })
+            .then(data => {
+                const first = this.props.image
+                let arr = [first]
+                for (var i in data.images) {
+                    if (data.images[i].url !== this.props.image.url) { 
+                        arr.push(data.images[i])
+                        if (data.images.length == arr.length) {
+                            this.setState(prevState => ({
+                                loaded: true,
+                                selectedImage: 0,
+                                images:prevState.images.concat(arr)
+                            }))
+                        }  
+                    }
+                }
+        }).catch(err => {
+            console.log(err)
+        })
+    }
+
+    select = page => {
+        this.setState({
+            selectedImage: page
+        })
     }
 
     render() {
         const { classes } = this.props;
         const { images, selectedImage } = this.state;
-        
+    
         return (
+            ((this.state.loaded == false) ?
+             <h1> Loading </h1>
+            :
             <Grid container justify="center" className={classes.container}>
                 <Grid item lg={9} mg={9} sm={9} xs={9} className={classes.main}>
                     <img
@@ -67,15 +89,18 @@ class ImageViewer extends Component {
                 </Grid>
                 <Grid item lg={9} mg={9} sm={9} xs={9}>
                     <GridList className={classes.gridList} cols={4}>
-                        {images.map((img,i) => (
-                            <GridListTile key={img.title} rows={0.5}>
-                                <img src={img.url} alt="title" />
-                            </GridListTile>
-                        ))}
-                    </GridList>
+                    {images.map((img,i) => {
+                        if(images[selectedImage].url != img.url) 
+                            return  <GridListTile key={i} rows={0.5}>
+                                        <img src={img.url} alt="title" onClick={() => this.select(i)}/>
+                                    </GridListTile>
+                        }
+                    )}
+                    </GridList>           
                 </Grid>
             </Grid>
-        );
+            )
+        )
     }
 }
 
