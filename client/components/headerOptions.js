@@ -22,7 +22,7 @@ export default withRouter(({ user, location }) => {
                 return <button>admin</button>
             }
             default: {
-                return <button>invited</button>
+                return <InvitedOptions />
             }
         }
     } else {
@@ -38,4 +38,3 @@ const _InvitedOptions = ({ classes }) => (
     </div>
 );
 const InvitedOptions = withStyles(invitedStyles)(_InvitedOptions);
-
