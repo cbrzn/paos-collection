@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 // import PrivateRoute from './util/privateRoute';
 import { Header } from './components';
 import withRoot from './withRoot';
@@ -71,7 +71,7 @@ class App extends Component {
                 <Route exact path="/" component={Home} />            
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/signup" component={SignUp} />
-                <Route exact path="/details" component={Details} />
+                <Route path="/details" component={Details} />
                 <Route exact path="/cart" component={CartTest} />
                 <Route exact path="/orders" component={OrdersTest} />\
                 <Route exact path="/product/new" component={UploadForm} />

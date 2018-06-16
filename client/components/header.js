@@ -7,7 +7,7 @@ import {
     Toolbar,
 } from '@material-ui/core';
 import Options from './headerOptions';
-import TypographyLink from './TypographyLink';
+import TypographyLink from './typographyLink.js';
 import styles from './Styles/header';
 
 function Header({ classes, user }) {

@@ -15,46 +15,54 @@ import styles from './styles';
 import queryString from 'query-string'
 
 class Details extends Component {
-    
     state = {
         title: '',
         description: '',
         price: 0,
         available: 0,
         expanded: true,
+        images:[]
     }
 
+    loadData() {
+        // const id = this.props.match.params.id
+        // fetch('../product/show', {
+        //     method: 'post',
+        //     headers: {
+        //         'Content-Type':'application/json'
+        //     },
+        //     body: JSON.stringify({ id })
+        // })
+        // .then(response => response.json())
+        // .then(data => {
+        //     this.setState({
+        //         title: data.prod.name
+        //     })
+        //     var promises = []
+        //     for (var i in data.images) {
+        //        var req = this.setState(prevState => ({
+        //             images:[...prevState.images, data.images[i]] 
+        //         }))
+        //         promises.push(req)
+        //     }
+        // })
+    }
 
     componentDidMount() {
-        const query = queryString.parse(location.search)
-        console.log(query)
-        const id = query.id
-        console.log(query.id)
-        fetch('./product/show', {
-            method: 'post',
-            headers: {
-                'Content-Type':'application/json'
-            },
-            body: JSON.stringify({ id })
-        })
-        .then(response => response.json())
-        .then(product => {
-            this.setState({
-                title: product.name
-            })
-        })
+        this.loadData()
     }
 
     render() {
         const {classes} = this.props;
         const {expanded} = this.state;
+        const { image, id } = this.props.location.state
 
         return ( 
             <div className={classes.root}>
                 <Paper elevation={4} className={classes.paper}>
                     <Grid container justify="center">
                         <Grid item lg={6} md={6} sm={6} xs={12}>
-                            <ImageViewer />
+                            <ImageViewer image={image} id={id}/>
                         </Grid>
                         <Grid item lg={6} md={6} sm={6} xs={8}>
                             <Typography 

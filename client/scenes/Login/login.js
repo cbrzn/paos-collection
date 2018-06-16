@@ -13,7 +13,7 @@ import {
 import { Visibility, VisibilityOff, } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import TypographyLink from '../../components/TypographyLink';
+import TypographyLink from '../../components/typographyLink.js';
 import styles from './styles';
 
 class Login extends Component {
