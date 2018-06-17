@@ -53,8 +53,8 @@ class Details extends Component {
     }
 
     render() {
-        const {classes} = this.props;
-        const {expanded} = this.state;
+        const { classes } = this.props;
+        const { expanded } = this.state;
         const { image, id } = this.props.location.state
 
         return ( 

@@ -28,16 +28,17 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        fetch('./product/all').then(response => response.json())
-        .then(data => {
-            let images = [], items = []
-            for (var i in data.products) {
-                images.push(data.image[i])
-                items.push(data.products[i].id)
-            }
+        // fetch('./product/all').then(response => response.json())
+        // .then(data => {
+        //     let images = [], items = []
+        //     for (var i in data.products) {
+        //         images.push(data.image[i])
+        //         items.push(data.products[i].id)
+        //     }
 
             this.setState({
                 items:[1,2,3,4,5,6,7,8,9],
+                // items, 
                 // images
             })
         // })

@@ -68,12 +68,12 @@ class App extends Component {
         <div>
             <Header />
             <Switch>
-                <Route exact path="/" component={Home} />            
+                <Route exact path="/" component={Home} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/signup" component={SignUp} />
                 <Route path="/details" component={Details} />
                 <Route exact path="/cart" component={CartTest} />
-                <Route exact path="/orders" component={OrdersTest} />\
+                <Route exact path="/orders" component={OrdersTest} />
                 <Route exact path="/product/new" component={UploadForm} />
                 {/* <PrivateRoute path="/accout" component={} /> */}
             </Switch>

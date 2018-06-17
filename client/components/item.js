@@ -77,11 +77,11 @@ class Item extends Component {
     productDetails = () => {
         this.props.history.push({
             pathname:'/details',
-            state: {id:this.props.id, image:this.props.image}
-        })
+            state: { id:this.props.id, image:this.props.image }
+        });
     }
     render() {
-        const { classes, data } = this.props;
+        const { data } = this.props;
 
         return (
             <div>

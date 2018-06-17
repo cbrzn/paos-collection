@@ -3,7 +3,7 @@ export default (theme) => ({
         padding: `${theme.spacing.unit * 4}px 0px`,
     },
     main: {
-        
+        width: 800,
     },
     group: {
 

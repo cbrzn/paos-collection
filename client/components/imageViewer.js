@@ -11,24 +11,6 @@ import PropTypes from 'prop-types';
 import queryString from 'query-string'
 import styles from './Styles/imageViewer';
 
-const styles = theme => ({
-    container: {
-        padding:`${theme.spacing.unit*4}px 0px`,
-    },
-    main: {
-        width: 800,
-    },
-    group: {
-
-    },
-    gridList: {
-        flexWrap: 'nowrap',
-        // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
-        transform: 'translateZ(0)',
-    },
-});
-
-
 // ITEMS 
 class ImageViewer extends Component {
 
