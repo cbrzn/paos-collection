@@ -17,6 +17,6 @@ export const invitedStyles = () => ({
 
 export const userStyles  = () => ({
     root: {
-        flexGrow: 1,
+        
     }
 })

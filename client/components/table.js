@@ -25,8 +25,6 @@ class _Table extends Component {
             rowsPerPage: 5,
         }
     }
-    
-    
 
     componentWillReceiveProps(nextProps) {
         let { items } = nextProps;
@@ -125,6 +123,10 @@ _Table.propTypes = {
     tableFormat: PropTypes.array.isRequired,
     items: PropTypes.array.isRequired,
     rowProps: PropTypes.object,
+}
+
+_Table.defaultProps = {
+    rowProps: {},
 }
 
 export default _Table;

@@ -10,25 +10,7 @@ import PropTypes from 'prop-types';
 import { Table } from '../../components';
 import styles from './Styles/orders';
 import OrderDetail from './orderDetail';
-
-const tableFormat = [
-    {
-        name: 'Order',
-        numeric: false
-    }, {
-        name: 'Username',
-        numeric: false,
-    }, {
-        name: 'Date',
-        numeric: true,
-    }, {
-        name: 'Status',
-        numeric: true,
-    }, {
-        name: 'Total',
-        numeric: true,
-    },
-];
+import ordersTable from '../../constants/ordersTable';
 
 class Orders extends Component {
 
@@ -80,7 +62,7 @@ class Orders extends Component {
                         <Paper className={classes.paper}>
                             <Table
                                 items={orders}
-                                tableFormat={tableFormat}
+                                tableFormat={ordersTable}
                                 rowProps={{
                                     hover: true,
                                     role: 'checkbox',

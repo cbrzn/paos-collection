@@ -8,22 +8,8 @@ import {
 import PropTypes from 'prop-types';
 import { Table } from '../../components';
 import styles from './styles';
+import cartTable from '../../constants/cartTable';
 
-const tableFormat = [
-    {
-        name: 'Product', 
-        numeric: false
-    },{ 
-        name: 'Price',
-        numeric: true
-    },{
-        name: 'Quantity', 
-        numeric: true
-    },{
-        name: 'Total',
-        numeric:true
-    }
-];
 
 class Cart extends Component {
 
@@ -63,7 +49,7 @@ class Cart extends Component {
                         <Paper className={classes.paper}>
                             <Table 
                                 items={items}
-                                tableFormat={tableFormat}
+                                tableFormat={cartTable}
                             />
                         </Paper>
                     </Grid>
