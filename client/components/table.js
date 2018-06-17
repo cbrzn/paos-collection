@@ -17,23 +17,12 @@ class _Table extends Component {
         super(props);
 
         this.state = {
-            items: [],
-            keys: props.tableFormat,
-            rowProps: props.rowProps,
+            keys: this.props.tableFormat,
+            rowProps: this.props.rowProps,
             currentPage: 0,
             count: 0,
             rowsPerPage: 5,
         }
-    }
-
-    componentWillReceiveProps(nextProps) {
-        let { items } = nextProps;
-        let count = items.length;
-        
-        this.setState({            
-            items: items,
-            count: count, 
-        });
     }
 
     handleChangePage = (event,page) => this.setState({currentPage: page});
@@ -86,8 +75,8 @@ class _Table extends Component {
             ));
     }
     render() {
-        const { classes } = this.props;
-        const { items, count, rowsPerPage, currentPage } = this.state; 
+        const { classes, items } = this.props;
+        const { count, rowsPerPage, currentPage } = this.state; 
 
         console.log('render table')
 
