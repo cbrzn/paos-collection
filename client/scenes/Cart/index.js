@@ -8,22 +8,8 @@ import {
 import PropTypes from 'prop-types';
 import { Table } from '../../components';
 import styles from './styles';
+import cartTable from '../../constants/cartTable';
 
-const tableFormat = [
-    {
-        name: 'Product', 
-        numeric: false
-    },{ 
-        name: 'Price',
-        numeric: true
-    },{
-        name: 'Quantity', 
-        numeric: true
-    },{
-        name: 'Total',
-        numeric:true
-    }
-];
 
 class Cart extends Component {
 
@@ -35,15 +21,14 @@ class Cart extends Component {
     }
 
     componentDidMount() {
-        let { items } = this.props;
-        let totalItems = items.map(item => ({
-            ...item,
-            total: item.price*item.quantity,
-        }));
-        this.setState({
-            items: totalItems,
-            count: items.length, 
-        });
+        fetch('/cart/show/6').then(response => response.json())
+            .then(items => {
+                console.log(items)
+            this.setState({
+                items: items.carts,
+                count: items.carts.length, 
+            });
+        })
     }
 
     handleChangePage = (event,page) => this.setState({currentPage: page});
@@ -63,7 +48,7 @@ class Cart extends Component {
                         <Paper className={classes.paper}>
                             <Table 
                                 items={items}
-                                tableFormat={tableFormat}
+                                tableFormat={cartTable}
                             />
                         </Paper>
                     </Grid>

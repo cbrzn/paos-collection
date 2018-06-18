@@ -15,46 +15,47 @@ import styles from './styles';
 import queryString from 'query-string'
 
 class Details extends Component {
+    quantity = React.createRef()
     state = {
         title: '',
         description: '',
         price: 0,
         available: 0,
+        id: '',
         expanded: true,
-        images:[]
-    }
-
-    loadData() {
-        const id = this.props.match.params.id
-        // fetch('../product/show', {
-        //     method: 'post',
-        //     headers: {
-        //         'Content-Type':'application/json'
-        //     },
-        //     body: JSON.stringify({ id })
-        // })
-        // .then(response => response.json())
-        // .then(data => {
-        //     this.setState({
-        //         title: data.prod.name
-        //     })
-        //     var promises = []
-        //     for (var i in data.images) {
-        //        var req = this.setState(prevState => ({
-        //             images:[...prevState.images, data.images[i]] 
-        //         }))
-        //         promises.push(req)
-        //     }
-        // })
     }
 
     componentDidMount() {
-        this.loadData()
+        const { description, price, stock } = this.props.location.state.details[0] 
+        const { id } = this.props.location.state
+        this.setState({ 
+            title: description,
+            description,
+            price,
+            available:stock,
+            id
+        })
+    }
+
+    addToCart = () => {
+        const { price, id } = this.state
+        const quantity = this.quantity.current.value
+        fetch('/cart/new', {
+            method: 'POST',
+            headers: {
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify({ price, quantity, id })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+        })
     }
 
     render() {
-        const {classes} = this.props;
-        const {expanded} = this.state;
+        const { classes } = this.props;
+        const { expanded } = this.state;
         const { image, id } = this.props.location.state
 
         return ( 
@@ -94,10 +95,11 @@ class Details extends Component {
                                 </Collapse>
                             </div>
                             <div className={classes.actions}>
-                                <BootInput />
+                                <input ref={this.quantity}/>
                                 <Button
                                     color="primary"
                                     variant="raised"
+                                    onClick={this.addToCart}
                                 > ADD *ICON* </Button>
                             </div>
                         </Grid>

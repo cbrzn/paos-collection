@@ -1,7 +1,8 @@
 const express = require ('express')
-let router = express.Router()
+const router = express.Router()
 
 router.use('/', require('./session'))
 router.use('/product',require('./product'))
+router.use('/cart', require('./cart'))
 
 module.exports = router

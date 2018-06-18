@@ -3,33 +3,14 @@ import {
     withStyles,
     Grid,
     Paper,
+    Button,
+    Slide,
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { Table } from '../../components';
-import styles from './styles';
-
-const tableFormat = [
-    {
-        name: 'Order',
-        numeric: false
-    }, {
-        name: 'Username',
-        numeric: false,
-    }, {
-        name: 'Date',
-        numeric: true,
-    }, {
-        name: 'Status',
-        numeric: true,
-    }, {
-        name: 'Total',
-        numeric: true,
-    }, 
-    // {
-    //     name: 'Details',
-    //     numeric: false,
-    // }
-];
+import styles from './Styles/orders';
+import OrderDetail from './orderDetail';
+import ordersTable from '../../constants/ordersTable';
 
 class Orders extends Component {
 
@@ -38,6 +19,13 @@ class Orders extends Component {
         currentPage: 0,
         count: 0,
         rowsPerPage: 5,
+        sizes: {
+            lg: 8,
+            md: 8,
+            sm: 8,
+            xs: 8,
+        },
+        expanded: false,
     }
 
     componentDidMount() {
@@ -50,22 +38,52 @@ class Orders extends Component {
 
     handleChangePage = (event, page) => this.setState({ currentPage: page });
     handleChangeRowsPerPage = (event) => this.setState({ rowsPerPage: event.target.value });
+    handleRowClick = (order) => {
+        this.setState({
+            expanded: true,
+            sizes: {                
+                lg: 6,
+                md: 8,
+                sm: 8,
+                xs: 8,
+            },
+            actualOrder: order,
+        })
+    }
 
     render() {
         const { classes } = this.props;
-        const { currentPage, orders, rowsPerPage, count } = this.state;
+        const { orders, sizes, expanded } = this.state;
 
         return (
             <div className={classes.root}>
-                <Grid container justify="center">
-                    <Grid item lg={8} md={8} sm={8} xs={8}>
+                <Grid container justify="space-around">
+                    <Grid item {...sizes}>
                         <Paper className={classes.paper}>
                             <Table
                                 items={orders}
-                                tableFormat={tableFormat}
+                                tableFormat={ordersTable}
+                                rowProps={{
+                                    hover: true,
+                                    role: 'checkbox',
+                                    onClick: this.handleRowClick,
+                                }}
                             />
                         </Paper>
                     </Grid>
+                    {
+                        expanded ? (
+                            <Grid item lg={4}>
+                                <Slide direction="left" in={expanded} mountOnEnter unMountOnExit>
+                                    <OrderDetail 
+                                        data={this.state.actualOrder}                                    
+                                    />
+                                </Slide>
+                            </Grid>
+                        ) : (
+                            null
+                        )
+                    }
                 </Grid>
             </div>
         )
@@ -73,6 +91,7 @@ class Orders extends Component {
 }
 
 Orders.propTypes = {
+    classes: PropTypes.object,
     orders: PropTypes.array.isRequired,
 };
 

@@ -1,26 +1,26 @@
 const express = require('express');
 const passport = require('passport');
+const user = require('../helpers/user_db');
 const auth = require('./../middlewares/isAuth')
-let user = require('./../helpers/user_db');
-let router = express.Router();
+const router = express.Router();
 
-router.post('/login', auth.isLogged,function(req, res, next) {
-    passport.authenticate('local', function(err, user, info) {
+router.post('/login', auth.isLogged, (req, res, next) => {
+    passport.authenticate('local', (err, user, info) => {
         if (err) {
             return next(err);
         }
         if (!user) {
-            return res.status(200).send({
+            return res.send({
               status: info
             });
         }
-        req.logIn(user, function(err) {
+        req.login(user,(err) => {
             if (err) {
-                return res.status(500).send({
+                return res.send({
                   status: 'Could not log in user'
                 });
             }
-            res.status(200).send({
+            res.send({
                 status:200
             });
         });

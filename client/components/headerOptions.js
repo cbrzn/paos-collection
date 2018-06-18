@@ -3,8 +3,12 @@ import { withRouter } from 'react-router';
 import {
     withStyles,
     Typography,
+    IconButton,
+    Menu,
+    MenuItem,
 } from '@material-ui/core';
-import invitedStyles from './Styles/invitedOptions';
+import { AccountCircle } from '@material-ui/icons';
+import { invitedStyles, userStyles } from './Styles/headerOptions';
 import TypographyLink from './typographyLink';
 
 export default withRouter(({ user, location }) => {
@@ -16,13 +20,13 @@ export default withRouter(({ user, location }) => {
                 return <InvitedOptions />
             }
             case 'user': {
-                return <button>user</button>
+                return <UserOptions />
             }
             case 'admin': {
                 return <button>admin</button>
             }
             default: {
-                return <button>invited</button>
+                return <InvitedOptions />
             }
         }
     } else {
@@ -39,3 +43,49 @@ const _InvitedOptions = ({ classes }) => (
 );
 const InvitedOptions = withStyles(invitedStyles)(_InvitedOptions);
 
+class _UserOptions extends React.Component {
+
+    state = {
+        anchor: null,
+    }
+
+    handleMenu = (event) => this.setState({ anchorEl: event.currentTarget });
+    handleClose = () => this.setState({ anchorEl: null });
+
+    render() {
+        const { classes } = this.props;
+        const { anchorEl } = this.state;
+        const open = Boolean(anchorEl);
+
+        return (
+            <div className={classes.root}>
+                <IconButton
+                  aria-owns={open ? 'menu-appbar' : null}
+                  aria-haspopup="true"
+                  onClick={this.handleMenu}
+                  color="inherit"
+                >
+                <AccountCircle />
+                </IconButton>
+                <Menu
+                    id="menu-appbar"
+                    anchorEl={anchorEl}
+                    anchorOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right',
+                    }}
+                    transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right',
+                    }}
+                    open={open}
+                    onClose={this.handleClose}
+                >
+                    <MenuItem onClick={this.handleClose}>My account</MenuItem>
+                    <MenuItem onClick={this.handleClose}>Logout</MenuItem>
+                </Menu>
+            </div>
+        );
+    }
+}
+const UserOptions = withStyles(userStyles)(_UserOptions);

@@ -33,15 +33,16 @@ class Home extends Component {
         .then(data => {
             let images = [], items = [], details = []
             for (var i in data.products) {
-                const { description, price, quantity } = data.products[i]
+                const { description, price, stock } = data.products[i]
                 images.push(data.image[i])
                 items.push(data.products[i].id)
-                details.push([description, price, quantity])
+                details.push([{description, price, stock}])
             }
             this.setState({
-                items,
-                images
-            })
+                items, 
+                images,
+                details
+            });
         })
     }
 

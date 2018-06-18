@@ -1,4 +1,4 @@
-export default () => ({
+export const invitedStyles = () => ({
     root: {
         display: 'flex',
         alignItems: 'center',
@@ -14,3 +14,9 @@ export default () => ({
         }
     }
 });
+
+export const userStyles  = () => ({
+    root: {
+        
+    }
+})
