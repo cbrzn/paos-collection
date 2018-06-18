@@ -73,11 +73,11 @@ const styles = theme => ({
 
 // ITEMS 
 class Item extends Component {
-    
     productDetails = () => {
+        const { id, image, details } = this.props
         this.props.history.push({
             pathname:'/details',
-            state: {id:this.props.id, image:this.props.image}
+            state: {id, image, details}
         })
     }
     render() {

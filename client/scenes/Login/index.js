@@ -4,7 +4,7 @@ import Login from './login';
 class LoginContainer extends Component {
 
     state = {
-        username: '',
+        email: '',
         password: '',
         fetching: false,
     }
@@ -16,17 +16,27 @@ class LoginContainer extends Component {
     }
 
     handleLogin = () => {
-        this.setState({fetching:true});
-        setInterval(() => this.setState({ fetching: false }), 3000)
+        const { email, password } = this.state
+        fetch('/login', {
+            method: 'post',
+            headers: {
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify({ email, password })
+        })
+        .then(response => response.json())
+        .then(data => {
+             ((data.status == 200) ? this.props.history.push('/') : alert('wrong'))
+        })
     }
 
     render() {
-        const { username, password, fetching } = this.state;
+        const { email, password, fetching } = this.state;
 
         return <Login 
             handleTextChange={this.handleTextChange}
             handleLogin={this.handleLogin}
-            username={username}
+            email={email}
             password={password}
             fetching={fetching}
         />

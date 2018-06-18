@@ -1,6 +1,7 @@
-const express = require ('express');
-let router = express.Router();
+const express = require ('express')
+let router = express.Router()
 
-router.use('/product',require('./product'));
+router.use('/', require('./session'))
+router.use('/product',require('./product'))
 
-module.exports = router;
+module.exports = router

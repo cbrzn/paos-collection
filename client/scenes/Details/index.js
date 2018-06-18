@@ -25,7 +25,7 @@ class Details extends Component {
     }
 
     loadData() {
-        // const id = this.props.match.params.id
+        const id = this.props.match.params.id
         // fetch('../product/show', {
         //     method: 'post',
         //     headers: {

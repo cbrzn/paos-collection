@@ -17,6 +17,7 @@ class Home extends Component {
     state = {
         items: [],
         images: [],
+        details: [],
         total: 10, // Numero total de paginas por paginacion
         display: 3, // Cuantos se van a mostrar
         number: 1, // Pagina actual
@@ -30,10 +31,12 @@ class Home extends Component {
     componentDidMount() {
         fetch('./product/all').then(response => response.json())
         .then(data => {
-            let images = [], items = []
+            let images = [], items = [], details = []
             for (var i in data.products) {
+                const { description, price, quantity } = data.products[i]
                 images.push(data.image[i])
                 items.push(data.products[i].id)
+                details.push([description, price, quantity])
             }
             this.setState({
                 items,
@@ -78,7 +81,7 @@ class Home extends Component {
                         <Grid container className={classes.list}>
                         {this.state.items.map((item, i) => (                                
                             <Grid item lg={3} key={i}>
-                                <Item data={item} image={this.state.images[i]} id={this.state.items[i]} index={i}/>
+                                <Item data={item} image={this.state.images[i]} id={this.state.items[i]} details={this.state.details[i]} index={i}/>
                             </Grid>                                
                         ))}
                         </Grid>            

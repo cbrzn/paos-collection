@@ -15,6 +15,7 @@ class SignUp extends Component {
     state = {
         name: '',
         password: '',
+        password_confirmation: '',
         email: '',
         location: '',
     }
@@ -25,9 +26,30 @@ class SignUp extends Component {
         });
     }
 
+    handleSignup = () => {
+        this.setState({fetching:true});
+        const { email, name, location, password, password_confirmation } = this.state
+        if (password === password_confirmation) {
+            fetch('/signup', {
+                method: 'post',
+                headers: {
+                    'Content-Type':'application/json'
+                },
+                body: JSON.stringify({ name, email, location, password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                this.setState({ fetching: false })
+            })
+        } else {
+            alert('password doesnt match')
+        }
+    }
+
     render() {
         const { classes } = this.props;
-        const { name, password, email, location } = this.state;
+        const { name, password, email, location, password_confirmation } = this.state;
 
         return (
             <div className={classes.root}>
@@ -56,6 +78,15 @@ class SignUp extends Component {
                                         fullWidth
                                         onChange={this.handleTextChange('email')}
                                     />
+                                   <TextField
+                                        id="location"
+                                        label="Location"
+                                        margin="dense"
+                                        value={location}
+                                        type="location"
+                                        fullWidth
+                                        onChange={this.handleTextChange('location')}
+                                    />
                                     <TextField
                                         id="password"
                                         label="Password"
@@ -65,13 +96,22 @@ class SignUp extends Component {
                                         fullWidth
                                         onChange={this.handleTextChange('password')}
                                     />
+                                    <TextField
+                                        id="password_confirmation"
+                                        label="Password Confirmation"
+                                        margin="dense"
+                                        value={password_confirmation}
+                                        type="password"
+                                        fullWidth
+                                        onChange={this.handleTextChange('password_confirmation')}
+                                    />
                                 </form>
                                 <div className={classes.actions}>
-                                    <Button                                    
+                                    <Button      
+                                        onClick={this.handleSignup}
                                         color="primary"
                                         variant="raised"
-                                        fullWidth
-                                    > SIGN UP </Button>
+                                        > SIGN UP </Button>
                                 </div>
                                 <div className={classes.information}>
                                     <Typography 

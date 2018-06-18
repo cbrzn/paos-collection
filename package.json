@@ -1,7 +1,7 @@
 {
   "name": "reacting",
   "version": "1.0.0",
-  "description": "A Yatch Schedule and Reservation System",
+  "description": "Paos collection",
   "scripts": {
     "start": "npm build && node dist/app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,12 +11,12 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cbrzn/tropicalSailing-min.git"
+    "url": "git+https://github.com/cbrzn/paos_collection-min.git"
   },
   "bugs": {
-    "url": "https://github.com/cbrzn/tropicalSailing-min/issues"
+    "url": "https://github.com/cbrzn/paos_collection-min/issues"
   },
-  "homepage": "https://github.com/cbrzn/tropicalSailing-min#readme",
+  "homepage": "https://github.com/cbrzn/paos_collection-min#readme",
   "dependencies": {
     "@material-ui/core": "^1.2.1",
     "@material-ui/icons": "^1.1.0",

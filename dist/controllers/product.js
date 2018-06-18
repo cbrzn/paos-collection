@@ -49,10 +49,11 @@ cloudinary.config({
  
 
 router.post('/new', upload.array('files[]'), async (req, res) => {
+    console.log(req.body)
     multipleUpload = new Promise(async (res, rej) => {
         let arr = []
-        for (var i=0; i<req.files.length; i++) {
-          await cloudinary.uploader.upload(req.files[i].path, (result) => {
+        for (var i in req.files) {
+          await cloudinary.uploader.upload(req.files[i].path, result => {
               arr.push(result.secure_url);
               if (arr.length === req.files.length) {
                   res(arr);
@@ -62,12 +63,19 @@ router.post('/new', upload.array('files[]'), async (req, res) => {
         }).then(result => result)
           .catch(error =>  error)
     
-    cons = await multipleUpload.then(data => {
-        for (var i=1; i<4; i++) {
-            if (data[i] === undefined) {
-                data[i] = null;
+    consume = await multipleUpload.then(data => {
+        const { description, price, stock } = req.body
+         product.new(description, price, stock).then(async new_product => {
+            for (var i in data) {
+               await product.add_image(new_product[0].id, data[i]).then(success => {
+                }).catch(async err => {
+                   res.send({ status: 503 })
+                })
             }
-        }
+            res.send({ status: 200 })
+        }).catch(err => {
+            console.log(err)
+        })
     })
 
 })

@@ -41,12 +41,12 @@ class Login extends Component {
                             <form noValidate autoComplete="off">
                                 <TextField
                                     autoFocus
-                                    id="username"
-                                    label="Username"
+                                    id="email"
+                                    label="Email"
                                     margin="normal"
-                                    value={props.username}
+                                    value={props.email}
                                     fullWidth
-                                    onChange={handleTextChange('username')}
+                                    onChange={handleTextChange('email')}
                                 />
                                 <TextField
                                     id="password"
