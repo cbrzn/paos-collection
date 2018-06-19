@@ -11,5 +11,12 @@ export default (theme) => ({
         display: 'flex',
         justifyContent:'center',
         marginTop: theme.spacing.unit*2,
-    }
+    },
+    modal: {
+        position: 'fixed',
+        backgroundColor: theme.palette.background.paper,
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing.unit * 4,
+        textAling: 'center'
+    },
 })

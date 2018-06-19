@@ -45,11 +45,19 @@ class Details extends Component {
             headers: {
                 'Content-Type':'application/json'
             },
+            credentials: 'include',
             body: JSON.stringify({ price, quantity, id })
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data)
+            switch (data.status) {
+                case 200:
+                    alert('product added to cart')
+                break
+                case 500:
+                    alert('something has happened! call the developers')
+                break
+            }
         })
     }
 

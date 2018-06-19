@@ -44,11 +44,12 @@ var PaymentForm = createReactClass({
       }
       else {
         self.setState({ paymentComplete: true, submitDisabled: false, token: response.id });
-        fetch('/cart/order', {
+        fetch('/cart/pay', {
             method: 'POST',
             headers: {
                 'Content-Type':'application/json'
             },
+            credentials: 'include',
             body: JSON.stringify({ token: response.id })
         })
         .then(response => response.json())

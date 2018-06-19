@@ -29,11 +29,14 @@ class Orders extends Component {
     }
 
     componentDidMount() {
-        let { orders } = this.props;
-        this.setState({
-            orders: orders,
-            count: orders.length,
-        });
+        fetch('./order/all')
+        .then(response => response.json())
+        .then(data => {
+            this.setState({
+                orders: data.orders,
+                count: data.orders.length,
+            });    
+        })
     }
 
     handleChangePage = (event, page) => this.setState({ currentPage: page });

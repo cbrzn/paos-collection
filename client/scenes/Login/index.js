@@ -18,15 +18,21 @@ class LoginContainer extends Component {
     handleLogin = () => {
         const { email, password } = this.state
         fetch('/login', {
-            method: 'post',
+            method: 'POST',
             headers: {
                 'Content-Type':'application/json'
             },
+            credentials: 'include',
             body: JSON.stringify({ email, password })
         })
         .then(response => response.json())
         .then(data => {
-             ((data.status == 200) ? this.props.history.push('/') : alert('wrong'))
+            if (data.status == 200) { 
+                this.props.history.push('/') 
+                localStorage.setItem('id', data.id)
+            } else {
+                alert('wrong')
+            }
         })
     }
 
