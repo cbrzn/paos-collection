@@ -56,7 +56,6 @@ class Home extends Component {
         const { classes } = this.props
 
         return (
-            <div className={classes.root}>
             <Grid container justify="center">
                 <Grid item lg={12} className={classes.title}>
                     <Typography variant="display1">
@@ -98,7 +97,6 @@ class Home extends Component {
                     />
                 </Grid>
             </Grid>
-            </div>
         );
     }
 }

@@ -76,9 +76,7 @@ class _Table extends Component {
     }
     render() {
         const { classes, items } = this.props;
-        const { count, rowsPerPage, currentPage } = this.state; 
-
-        console.log('render table')
+        const { count, rowsPerPage, currentPage } = this.state;
 
         return (
             <Table>

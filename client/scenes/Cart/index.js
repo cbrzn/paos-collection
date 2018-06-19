@@ -42,28 +42,26 @@ class Cart extends Component {
         const { currentPage, items, rowsPerPage, count } = this.state;
 
         return (
-            <div className={classes.root}>
-                <Grid container justify="center">
-                    <Grid item lg={8} md={8} sm={8} xs={8}>
-                        <Paper className={classes.paper}>
-                            <Table 
-                                items={items}
-                                tableFormat={cartTable}
-                            />
-                        </Paper>
-                    </Grid>
-                    <Grid item lg={12} md={12} sm={12} xs={12}>
-                        <div className={classes.actions}>
-                            <Button
-                                variant="raised"
-                                color="primary"
-                                onClick={this.handlePay}
-                            > Pay
-                            </Button>
-                        </div>
-                    </Grid>
+            <Grid container justify="center">
+                <Grid item lg={8} md={8} sm={8} xs={8}>
+                    <Paper className={classes.paper}>
+                        <Table 
+                            items={items}
+                            tableFormat={cartTable}
+                        />
+                    </Paper>
                 </Grid>
-            </div> 
+                <Grid item lg={12} md={12} sm={12} xs={12}>
+                    <div className={classes.actions}>
+                        <Button
+                            variant="raised"
+                            color="primary"
+                            onClick={this.handlePay}
+                        > Pay
+                        </Button>
+                    </div>
+                </Grid>
+            </Grid>
         )
     }
 }

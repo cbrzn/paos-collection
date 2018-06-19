@@ -56,36 +56,34 @@ class Orders extends Component {
         const { orders, sizes, expanded } = this.state;
 
         return (
-            <div className={classes.root}>
-                <Grid container justify="space-around">
-                    <Grid item {...sizes}>
-                        <Paper className={classes.paper}>
-                            <Table
-                                items={orders}
-                                tableFormat={ordersTable}
-                                rowProps={{
-                                    hover: true,
-                                    role: 'checkbox',
-                                    onClick: this.handleRowClick,
-                                }}
-                            />
-                        </Paper>
-                    </Grid>
-                    {
-                        expanded ? (
-                            <Grid item lg={4}>
-                                <Slide direction="left" in={expanded} mountOnEnter unMountOnExit>
-                                    <OrderDetail 
-                                        data={this.state.actualOrder}                                    
-                                    />
-                                </Slide>
-                            </Grid>
-                        ) : (
-                            null
-                        )
-                    }
+            <Grid container justify="space-around">
+                <Grid item {...sizes}>
+                    <Paper className={classes.paper}>
+                        <Table
+                            items={orders}
+                            tableFormat={ordersTable}
+                            rowProps={{
+                                hover: true,
+                                role: 'checkbox',
+                                onClick: this.handleRowClick,
+                            }}
+                        />
+                    </Paper>
                 </Grid>
-            </div>
+                {
+                    expanded ? (
+                        <Grid item lg={4}>
+                            <Slide direction="left" in={expanded} mountOnEnter unMountOnExit>
+                                <OrderDetail 
+                                    data={this.state.actualOrder}                                    
+                                />
+                            </Slide>
+                        </Grid>
+                    ) : (
+                        null
+                    )
+                }
+            </Grid>
         )
     }
 }

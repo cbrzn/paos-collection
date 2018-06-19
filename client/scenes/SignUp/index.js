@@ -8,6 +8,7 @@ import {
     Divider,
     Button,
 } from '@material-ui/core'
+import { Link } from 'react-router-dom';
 import styles from './styles';
 
 class SignUp extends Component {
@@ -27,7 +28,7 @@ class SignUp extends Component {
     }
 
     handleSignup = () => {
-        this.setState({fetching:true});
+        this.setState({ fetching:true });
         const { email, name, location, password, password_confirmation } = this.state
         if (password === password_confirmation) {
             fetch('/signup', {
@@ -39,11 +40,11 @@ class SignUp extends Component {
             })
             .then(response => response.json())
             .then(data => {
-                console.log(data)
-                this.setState({ fetching: false })
+                this.setState({ fetching: false });
+                ((data.status == 200) ? this.props.history.push('/') : alert('Wrong'))                
             })
         } else {
-            alert('password doesnt match')
+            alert('Password doesnt match');
         }
     }
 
@@ -52,90 +53,87 @@ class SignUp extends Component {
         const { name, password, email, location, password_confirmation } = this.state;
 
         return (
-            <div className={classes.root}>
-                <Grid container justify="center">
-                    <Grid item lg={3}>
-                        <Paper className={classes.paper}>                            
-                            <div className={classes.container}>
-                                <Typography variant="title">                                    
-                                    Sign Up                                    
-                                </Typography>                            
-                                <form noValidate autoComplete="off">
-                                    <TextField
-                                        id="name"
-                                        label="Name"
-                                        margin="dense"
-                                        value={name}
-                                        fullWidth
-                                        onChange={this.handleTextChange('name')}
-                                    />
-                                    <TextField
-                                        id="email"
-                                        label="Email"
-                                        margin="dense"
-                                        value={email}
-                                        type="email"
-                                        fullWidth
-                                        onChange={this.handleTextChange('email')}
-                                    />
-                                   <TextField
-                                        id="location"
-                                        label="Location"
-                                        margin="dense"
-                                        value={location}
-                                        type="location"
-                                        fullWidth
-                                        onChange={this.handleTextChange('location')}
-                                    />
-                                    <TextField
-                                        id="password"
-                                        label="Password"
-                                        margin="dense"
-                                        value={password}
-                                        type="password"
-                                        fullWidth
-                                        onChange={this.handleTextChange('password')}
-                                    />
-                                    <TextField
-                                        id="password_confirmation"
-                                        label="Password Confirmation"
-                                        margin="dense"
-                                        value={password_confirmation}
-                                        type="password"
-                                        fullWidth
-                                        onChange={this.handleTextChange('password_confirmation')}
-                                    />
-                                </form>
-                                <div className={classes.actions}>
-                                    <Button      
-                                        onClick={this.handleSignup}
-                                        color="primary"
-                                        variant="raised"
-                                        > SIGN UP </Button>
-                                </div>
-                                <div className={classes.information}>
-                                    <Typography 
-                                        paragraph={true}
-                                        variant="caption" 
-                                        align="center"
-                                    > By signing up, you agree to the terms and conditions
-                                    </Typography>                                    
-                                </div>
-                            </div>
-                            <Divider />
-                            <div className={classes.footer}>
+            <Grid container justify="center">
+                <Grid item lg={3} md={4} sm={6} xs={10}>
+                    <Paper className={classes.paper}>                            
+                        <div className={classes.container}>
+                            <Typography variant="title">                                    
+                                Sign Up                                    
+                            </Typography>                            
+                            <form noValidate autoComplete="off">
+                                <TextField
+                                    id="name"
+                                    label="Name"
+                                    margin="dense"
+                                    value={name}
+                                    fullWidth
+                                    onChange={this.handleTextChange('name')}
+                                />
+                                <TextField
+                                    id="email"
+                                    label="Email"
+                                    margin="dense"
+                                    value={email}
+                                    type="email"
+                                    fullWidth
+                                    onChange={this.handleTextChange('email')}
+                                />
+                                <TextField
+                                    id="location"
+                                    label="Location"
+                                    margin="dense"
+                                    value={location}
+                                    type="location"
+                                    fullWidth
+                                    onChange={this.handleTextChange('location')}
+                                />
+                                <TextField
+                                    id="password"
+                                    label="Password"
+                                    margin="dense"
+                                    value={password}
+                                    type="password"
+                                    fullWidth
+                                    onChange={this.handleTextChange('password')}
+                                />
+                                <TextField
+                                    id="password_confirmation"
+                                    label="Password Confirmation"
+                                    margin="dense"
+                                    value={password_confirmation}
+                                    type="password"
+                                    fullWidth
+                                    onChange={this.handleTextChange('password_confirmation')}
+                                />
+                            </form>
+                            <div className={classes.actions}>
+                                <Button      
+                                    onClick={this.handleSignup}
+                                    color="primary"
+                                    variant="raised"
+                                    > SIGN UP </Button>
                                 <Typography
-                                > Already registered? 
-                                </Typography>
-                                <Button                                   
-                                > Login 
-                                </Button>     
-                            </div>                       
-                        </Paper>
-                    </Grid>
+                                    paragraph={true}
+                                    variant="caption"
+                                    align="center"
+                                > By signing up, you agree to the terms and conditions
+                                </Typography>  
+                            </div>
+                        </div>
+                        <Divider />
+                        <div className={classes.footer}>
+                            <Typography
+                            > Already registered? 
+                            </Typography>
+                            <Button
+                                
+                            > Login 
+                            </Button>     
+                        </div>                       
+                    </Paper>
                 </Grid>
-            </div>
-        )
+            </Grid>
+        );
     }
 }
 

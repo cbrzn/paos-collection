@@ -23,7 +23,7 @@ function Header({ classes, user }) {
                     title="Pao's"
                     className={classes.title}
                 />
-                <Options user={{ type: 'user' }} />
+                <Options user={{ type: 'invited' }} />
             </Toolbar>
         </AppBar>
     );

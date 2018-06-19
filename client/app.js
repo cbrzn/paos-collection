@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 // import PrivateRoute from './util/privateRoute';
 import { Header } from './components';
 import withRoot from './withRoot';
-import { Home, Login, Details, Cart, Orders, SignUp } from './scenes';
+import { Home, Login, Details, Cart, Orders, SignUp, Account } from './scenes';
 import UploadForm from './components/uploadForm';
 import PaymentForm from './components/PaymentForm';
 
@@ -16,9 +16,9 @@ function createData(product, price, quantity ) {
 }
 // For testing orders scene
 let id2=0;
-function createOrders(username,date,status,total) {
+function createOrders(name,date,status,total) {
     id2+=1;
-    return { order:id2, username, date, status, total}
+    return { order: id2, name, date, status, total}
 }
 const data = [
     createData('Frozen yoghurt', 45, 4),
@@ -61,11 +61,17 @@ function OrdersTest() {
 
 
 class App extends Component {
+
+    componentDidMount() {
+        // Get auth ... 
+    }
+
     render() {
         return (
         <div>
             <Header />
-            <Switch>
+            <div style={{flexGrow:1}}>
+                <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/signup" component={SignUp} />
@@ -74,8 +80,10 @@ class App extends Component {
                 <Route exact path="/orders" component={OrdersTest} />
                 <Route exact path="/product/new" component={UploadForm} />
                 <Route path="/pay" component={PaymentForm} />
+                <Route exact path="/account" component={Account} />
                 {/* <PrivateRoute path="/accout" component={} /> */}
             </Switch>
+            </div>
         </div>
         )
     }

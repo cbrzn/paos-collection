@@ -26,7 +26,7 @@ class LoginContainer extends Component {
         })
         .then(response => response.json())
         .then(data => {
-             ((data.status == 200) ? this.props.history.push('/') : alert('wrong'))
+             ((data.status == 200) ? this.props.history.push('/') : alert('Wrong'))
         })
     }
 

@@ -1,7 +1,4 @@
 export default (theme) => ({
-    root: {
-        flexGrow: 1,
-    },
     paper: {
         marginTop: theme.spacing.unit*5,
     },
@@ -12,13 +9,12 @@ export default (theme) => ({
         alignItems: 'center',
     },
     actions: {
+        display:'flex',
+        // justifyContent:'center',
+        flexDirection: 'column',
+        alignItems: 'center',
         marginTop: theme.spacing.unit*3,
         width: '100%',
-    },
-    information: {
-        width: '75%',
-        marginTop: theme.spacing.unit*2,
-        width: '100%'
     },
     footer: {
         display:'flex',

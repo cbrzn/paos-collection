@@ -7,7 +7,7 @@ import {
     Menu,
     MenuItem,
 } from '@material-ui/core';
-import { AccountCircle } from '@material-ui/icons';
+import AccountCircle from '@material-ui/icons/AccountCircle';
 import { invitedStyles, userStyles } from './Styles/headerOptions';
 import TypographyLink from './typographyLink';
 

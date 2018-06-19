@@ -59,53 +59,51 @@ class Details extends Component {
         const { image, id } = this.props.location.state
 
         return ( 
-            <div className={classes.root}>
-                <Paper elevation={4} className={classes.paper}>
-                    <Grid container justify="center">
-                        <Grid item lg={6} md={6} sm={6} xs={12}>
-                            <ImageViewer image={image} id={id}/>
-                        </Grid>
-                        <Grid item lg={6} md={6} sm={6} xs={8}>
-                            <Typography 
-                                variant="title"
-                                className={classes.title}
-                            >
-                                {this.state.title}
-                            </Typography>
-                            <Typography
-                                variant="subheading"
-                                className={classes.price}
-                            >
-                                $ {this.state.price}
-                            </Typography>        
-                            <div className={classes.description}>
-                                <ButtonBase 
-                                    onClick={this.handleChange} 
-                                    className={classes.expand}
-                                >
-                                    <Typography>
-                                        Description
-                                    </Typography>                                    
-                                </ButtonBase>
-                                <Divider />
-                                <Collapse in={expanded}>
-                                    <Typography>
-                                        {this.state.description}
-                                    </Typography>
-                                </Collapse>
-                            </div>
-                            <div className={classes.actions}>
-                                <input ref={this.quantity}/>
-                                <Button
-                                    color="primary"
-                                    variant="raised"
-                                    onClick={this.addToCart}
-                                > ADD *ICON* </Button>
-                            </div>
-                        </Grid>
+            <Paper elevation={4} className={classes.paper}>
+                <Grid container justify="center">
+                    <Grid item lg={6} md={6} sm={6} xs={12}>
+                        <ImageViewer image={image} id={id}/>
                     </Grid>
-                </Paper>
-            </div>            
+                    <Grid item lg={6} md={6} sm={6} xs={8}>
+                        <Typography 
+                            variant="title"
+                            className={classes.title}
+                        >
+                            {this.state.title}
+                        </Typography>
+                        <Typography
+                            variant="subheading"
+                            className={classes.price}
+                        >
+                            $ {this.state.price}
+                        </Typography>        
+                        <div className={classes.description}>
+                            <ButtonBase 
+                                onClick={this.handleChange} 
+                                className={classes.expand}
+                            >
+                                <Typography>
+                                    Description
+                                </Typography>                                    
+                            </ButtonBase>
+                            <Divider />
+                            <Collapse in={expanded}>
+                                <Typography>
+                                    {this.state.description}
+                                </Typography>
+                            </Collapse>
+                        </div>
+                        <div className={classes.actions}>
+                            <input ref={this.quantity}/>
+                            <Button
+                                color="primary"
+                                variant="raised"
+                                onClick={this.addToCart}
+                            > ADD *ICON* </Button>
+                        </div>
+                    </Grid>
+                </Grid>
+            </Paper>
         );
     }
 }

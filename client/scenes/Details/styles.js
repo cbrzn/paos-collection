@@ -1,7 +1,4 @@
 export default (theme) => ({
-    root: {
-        flexGrow: 1,
-    },
     paper: {
         margin: `${theme.spacing.unit * 4}px ${theme.spacing.unit * 8}px 0px`,
     },
