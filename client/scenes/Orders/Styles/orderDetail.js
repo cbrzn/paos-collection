@@ -18,5 +18,10 @@ export default (theme) => ({
     },
     key: {
         marginRight:theme.spacing.unit*4,
-    }
+    },
+    actions: {
+        display: 'flex',
+        justifyContent: 'center',
+        
+    },
 })

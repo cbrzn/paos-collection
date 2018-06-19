@@ -92,7 +92,7 @@ class _Table extends Component {
                     <TableRow>
                         <TablePagination
                             colSpan={5}
-                            count={count}
+                            count={items.length}
                             rowsPerPage={rowsPerPage}
                             page={currentPage}
                             onChangePage={this.handleChangePage}

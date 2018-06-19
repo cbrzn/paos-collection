@@ -17,7 +17,6 @@ class Orders extends Component {
     state = {
         orders: [],
         currentPage: 0,
-        count: 0,
         rowsPerPage: 5,
         sizes: {
             lg: 8,
@@ -32,7 +31,6 @@ class Orders extends Component {
         let { orders } = this.props;
         this.setState({
             orders: orders,
-            count: orders.length,
         });
     }
 

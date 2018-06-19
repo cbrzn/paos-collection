@@ -3,6 +3,8 @@ import {
     withStyles,
     Paper,
     Typography,
+    Button,
+    Divider,
 } from '@material-ui/core';
 import styles from './Styles/orderDetail';
 
@@ -40,6 +42,11 @@ const OrderDetail = ({ classes, data }) => (
                 classes={classes}
                 title="Payment form...?:"
             />
+            <div className={classes.actions}>
+                <Button
+                
+                > UPDATE </Button>
+            </div>
         </div>
     </Paper>
 );
