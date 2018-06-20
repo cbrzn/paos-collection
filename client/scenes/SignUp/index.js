@@ -32,7 +32,7 @@ class SignUp extends Component {
         const { email, name, location, password, password_confirmation } = this.state
         if (password === password_confirmation) {
             fetch('/signup', {
-                method: 'post',
+                method: 'POST',
                 headers: {
                     'Content-Type':'application/json'
                 },

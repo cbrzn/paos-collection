@@ -15,12 +15,14 @@ router.post('/login', auth.isLogged, (req, res, next) => {
             });
         }
         req.login(user,(err) => {
+            const id = user.id
             if (err) {
                 return res.send({
                   status: 'Could not log in user'
                 });
             }
             res.send({
+                id,
                 status:200
             });
         });

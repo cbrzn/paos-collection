@@ -28,10 +28,17 @@ class Orders extends Component {
     }
 
     componentDidMount() {
-        let { orders } = this.props;
-        this.setState({
-            orders: orders,
-        });
+        fetch('./order/all')
+        .then(response => response.json())
+        .then(data => {
+            if(data.orders.length > 0) {
+                this.setState({
+                    orders: data.orders,
+                });
+            } else {
+                // Handle 0 orders
+            }
+        });        
     }
 
     handleChangePage = (event, page) => this.setState({ currentPage: page });
@@ -88,8 +95,6 @@ class Orders extends Component {
 
 Orders.propTypes = {
     classes: PropTypes.object,
-    orders: PropTypes.array.isRequired,
 };
-
 
 export default withStyles(styles)(Orders);
