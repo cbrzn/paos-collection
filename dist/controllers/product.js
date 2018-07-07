@@ -77,7 +77,6 @@ router.post('/new', upload.array('files[]'), async (req, res) => {
             console.log(err)
         })
     })
-
 })
 
 module.exports = router

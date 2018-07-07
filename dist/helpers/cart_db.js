@@ -19,7 +19,7 @@ module.exports.show = (user_id, ordered)=>{
 module.exports.new = (user_id, product_id, quantity, product_price, total)=>{
     return new Promise((res,rej)=>{
         db.connect().then(obj=>{
-            obj.none('insert into carts (user_id, product, quantity, price, total) values ($1, $2, $3, $4, $5)',[user_id, product_id, quantity, product_price, total]).then(data=>{
+            obj.none('insert into carts (user_id, product_id, quantity, price, total) values ($1, $2, $3, $4, $5)',[user_id, product_id, quantity, product_price, total]).then(data=>{
                 res(data);
                 obj.done();
             }).catch(error=>{

@@ -17,6 +17,7 @@ class LoginContainer extends Component {
 
     handleLogin = () => {
         const { email, password } = this.state
+        console.log(email, password)
         fetch('/login', {
             method: 'POST',
             headers: {
@@ -27,6 +28,7 @@ class LoginContainer extends Component {
         })
         .then(response => response.json())
         .then(data => {
+            console.log(data)
             if (data.status == 200) { 
                 this.props.history.push('/') 
                 localStorage.setItem('id', data.id)
